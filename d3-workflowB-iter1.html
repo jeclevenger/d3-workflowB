@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>d3-workflowB</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/d3-workflowB-iter1.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container pt2">
+    <div class="row">
+      <div class="twelve column">
+          <h1>d3-workflowB-iter1</h1>
+          <p>back to <a href="index.html">demo index</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="container pt2">
+        <form id="loadform">
+            <div class="row">
+                <div class="six columns">
+                  <label for="datasetSelector">Choose data set:</label>
+                  <select class="u-full-width" id="datasetSelector">
+                    <option value="empty"></option>
+                    <option value="example-small-data-set.csv">small example data set</option>
+                    <option value="example-large-data-set.csv">large example data set</option>
+                  </select>
+                </div>
+                <div class="six columns">
+                    <label for="testtest">Load data set:</label>
+                    <input class="button-primary" value="load" type="submit" id="testtest">
+                </div>
+            </div>
+            <div class="row pt2">
+                <div class="four columns">
+                    <label for="xaxisSelector">Choose x-axis:</label>
+                    <select class="u-full-width reuse" id="xaxisSelector"></select>
+                    <label for="xaxismin">x-min <span id="xaxisminDomain"></span>:</label>
+                    <input type="number" name="xaxismin" id="xaxismin">
+                    <label for="xaxismax">x-max:</label>
+                    <input type="number" name="xaxismin" id="xaxismax">
+                </div>
+                <div class="four columns">
+                    <label for="yaxisSelector">Choose y-axis:</label>
+                    <select class="u-full-width reuse" id="yaxisSelector"></select>
+                    <label for="yaxismin">y-min:</label>
+                    <input type="number" name="yaxismin" id="yaxismin">
+                    <label for="yaxismax">y-max:</label>
+                    <input type="number" name="yaxismin" id="yaxismax">
+                </div>
+                <div class="four columns">
+                    <label for="coloraxisSelector">Choose color variable:</label>
+                    <select class="u-full-width reuse" id="coloraxisSelector"></select>
+                    <label for="colormapSelector">Choose color map:</label>
+                    <select class="u-full-width reuse" id="colormapSelector"></select>
+                </div>
+            </div>
+            <div class="row pt2">
+                <div class="four columns">
+                  <label for="visualizationSelector">Choose visualization:</label>
+                  <select class="u-full-width" id="visualizationSelector">
+                    <option selected="selected" value="example-small-data-set.csv">plot and table</option>
+                    <option value="example-small-data-set.csv">plot</option>
+                    <option value="example-large-data-set.csv">table</option>
+                  </select>
+                </div>
+                <div class="eight columns">
+                    <label for="testtest2">Generate visualization:</label>
+                    <input class="button-primary" value="generate" type="submit" id="testtest2">
+                </div>
+            </div>
+        </form>
+  </div>
+  <div class="container pt2">
+    <div class="row">
+      <div id="visualization" class="twelve column reuse"></div>
+    </div>
+  </div>
+  <div class="container pt2" style="width: 100%; max-width: 100%; min-width: 960px;">
+    <div class="row">
+      <div id="table" class="twelve column reuse"></div>
+    </div>
+  </div>
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="js/jquery-3.2.0.min.js"></script>
+<script src="js/d3/d3.min.js"></script>
+<script src="js/d3-workflowB-iter1.js"></script>
+</body>
+</html>
