@@ -3,6 +3,7 @@ $( document ).ready(function () {
     $(document).on("click", ":submit", function(event){
         if ( $(this).val() == "load" ) {
             loadData($("select#datasetSelector").val());
+            $("#currentdataset").text($("select#datasetSelector").val());
         } else if ( $(this).val() == "generate" ) {
 
         } else {
@@ -10,6 +11,62 @@ $( document ).ready(function () {
         }
         event.preventDefault();
     });
+    //todo condense
+    $("#xaxisSelector").change(function() {
+        $("#xaxisminRange").text("( " + $(this).find(":selected").attr("rangemin") + " )");
+        $("#xaxismin").val($(this).find(":selected").attr("rangemin"));
+        $("#xaxismaxRange").text("( " + $(this).find(":selected").attr("rangemax") + " )");
+        $("#xaxismax").val($(this).find(":selected").attr("rangemax"));
+    });
+    $("#yaxisSelector").change(function() {
+        $("#yaxisminRange").text("( " + $(this).find(":selected").attr("rangemin") + " )");
+        $("#yaxismin").val($(this).find(":selected").attr("rangemin"));
+        $("#yaxismaxRange").text("( " + $(this).find(":selected").attr("rangemax") + " )");
+        $("#yaxismax").val($(this).find(":selected").attr("rangemax"))
+    });
+    $("#coloraxisSelector").change(function() {
+        $("#colormapType").text("(" + $(this).find(":selected").attr("dtype") + ")")
+    });
+
+
+    function loadData(datafilename) {
+        d3.csv("data/d3-workflowB/" + datafilename, function(error, data) {
+            if (error) throw error;
+
+            var xaxisSelector = d3.select("#xaxisSelector");
+            var yaxisSelector = d3.select("#yaxisSelector");
+            var colorSelector = d3.select("#coloraxisSelector");
+
+            var headerNames = d3.keys(data[0]);
+            for (var k in headerNames) {
+                var rangemax = d3.max(data, function(d) { return d[headerNames[k]]; });
+                var rangemin = d3.min(data, function(d) { return d[headerNames[k]]; });
+
+                if (isNaN(data[1][headerNames[k]])) {
+                    colorSelector.append("option")
+                        .attr("value", headerNames[k])
+                        .attr("dtype", "discrete")
+                        .text(headerNames[k]);
+                } else {
+                    colorSelector.append("option")
+                        .attr("value", headerNames[k])
+                        .attr("dtype", "continuous")
+                        .text(headerNames[k]);
+                    xaxisSelector.append("option")
+                        .attr("value", headerNames[k])
+                        .attr("rangemax", rangemax)
+                        .attr("rangemin", rangemin)
+                        .text(headerNames[k]);
+                    yaxisSelector.append("option")
+                        .attr("value", headerNames[k])
+                        .attr("rangemax", rangemax)
+                        .attr("rangemin", rangemin)
+                        .text(headerNames[k]);
+                }
+            }
+        });
+    }
+
 
     function plotData() {
         $( ".reuse").empty();
@@ -44,6 +101,7 @@ $( document ).ready(function () {
             var newRow = thead.append("tr");
 
             var headerNames = d3.keys(data[0]);
+
             for (var k in headerNames) {
                 var newth = newRow.append("th")
                             .classed("test", true);
@@ -120,33 +178,6 @@ $( document ).ready(function () {
               //yaxis
               svg.append("g")
                   .call(d3.axisLeft(y));
-        });
-    }
-
-    function loadData(datafilename) {
-        d3.csv("data/d3-workflowB/" + datafilename, function(error, data) {
-            if (error) throw error;
-
-            var xaxisSelector = d3.select("#xaxisSelector");
-            var yaxisSelector = d3.select("#yaxisSelector");
-            var colorSelector = d3.select("#coloraxisSelector");
-
-            var headerNames = d3.keys(data[0]);
-            for (var k in headerNames) {
-                colorSelector.append("option")
-                        .attr("value", headerNames[k])
-                        .text(headerNames[k]);
-                if (isNaN(data[1][headerNames[k]])) {
-
-                } else {
-                    xaxisSelector.append("option")
-                        .attr("value", headerNames[k])
-                        .text(headerNames[k]);
-                    yaxisSelector.append("option")
-                        .attr("value", headerNames[k])
-                        .text(headerNames[k]);
-                }
-            }
         });
     }
 });
