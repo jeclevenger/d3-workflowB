@@ -5,7 +5,14 @@ $( document ).ready(function () {
             loadData($("select#datasetSelector").val());
             $("#currentdataset").text($("select#datasetSelector").val());
         } else if ( $(this).val() == "generate" ) {
-
+            plotData($("select#datasetSelector").val(),
+                $("select#xaxisSelector").val(),
+                $("#xaxismin").val(),
+                $("#xaxismax").val(),
+                $("select#yaxisSelector").val(),
+                $("#yaxismin").val(),
+                $("#yaxismax").val());
+            $("#currentdataset").text($("select#datasetSelector").val());
         } else {
 
         }
@@ -68,7 +75,7 @@ $( document ).ready(function () {
     }
 
 
-    function plotData() {
+    function plotData(datafilename,xaxis,xmin,xmax,yaxis,ymin,ymax) {
         $( ".reuse").empty();
 
         var margin = {top: 20, right: 20, bottom: 50, left: 50},
@@ -127,57 +134,44 @@ $( document ).ready(function () {
                     }
                 }
             });
-            if (loadtype == "plot") {
-              // scale the range of the data
-              x.domain([0, d3.max(data, function(d) { return d[xaxis]; })*1.33]);
-              y.domain([0, d3.max(data, function(d) { return d[yaxis]; })*1.33]);
+            /* d3.max(data, function(d) { return d[xaxis]; })*1.33 */
+            x.domain([xmin, xmax]);
+            y.domain([ymin, ymax]);
 
-              // add the dots with tooltips
-              svg.selectAll("dot")
-                 .data(data)
-               .enter().append("circle")
-                 .attr("r", 5)
-                 .attr("cx", function(d) { return x(d[xaxis]); })
-                 .attr("cy", function(d) { return y(d[yaxis]); })
-                 .on("mouseover", function(d) {
-                   div.transition()
-                     .duration(200)
-                     .style("opacity", .9);
-                   div.html("<div>" + xaxis + ":  " + d[xaxis] + "</div><div>" +  yaxis+ ":  " +d[yaxis] + "</div>")
-                     .style("left", (d3.event.pageX) + "px")
-                     .style("top", (d3.event.pageY - 28) + "px");
-                   })
-                 .on("mouseout", function(d) {
-                   div.transition()
-                     .duration(500)
-                     .style("opacity", 0);
-                   });
+            svg.selectAll("dot")
+             .data(data)
+            .enter().append("circle")
+             .attr("r", 5)
+             .attr("cx", function(d) { return x(d[xaxis]); })
+             .attr("cy", function(d) { return y(d[yaxis]); })
+             .on("mouseover", function(d) {
+               div.transition()
+                 .duration(200)
+                 .style("opacity", .9);
+               div.html("<div>" + xaxis + ":  " + d[xaxis] + "</div><div>" +  yaxis+ ":  " +d[yaxis] + "</div>")
+                 .style("left", (d3.event.pageX) + "px")
+                 .style("top", (d3.event.pageY - 28) + "px");
+               })
+             .on("mouseout", function(d) {
+               div.transition()
+                 .duration(500)
+                 .style("opacity", 0);
+               });
 
-              svg.append("text")
-                .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
-                .attr("transform", "translate("+ (width/2) +","+(height+margin.bottom-15)+")")  // centre below axis
-                .text(xaxis);
-              svg.append("text")
-                .attr("text-anchor", "middle")
-                .attr("transform", "translate("+ (-margin.left+15) +","+(height/2)+")rotate(-90)")
-                .text(yaxis);
-            } else {
-              svg.append("text")
-                .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
-                .attr("transform", "translate("+ (width/2) +","+(height+margin.bottom-15)+")")  // centre below axis
-                .text("x-axis");
-              svg.append("text")
-                .attr("text-anchor", "middle")
-                .attr("transform", "translate("+ (-margin.left+15) +","+(height/2)+")rotate(-90)")
-                .text("y-axis");
-              }
-              // xaxis
-              svg.append("g")
-                  .attr("transform", "translate(0," + height + ")")
-                  .call(d3.axisBottom(x));
-              //yaxis
-              svg.append("g")
-                  .call(d3.axisLeft(y));
+            svg.append("text")
+            .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
+            .attr("transform", "translate("+ (width/2) +","+(height+margin.bottom-15)+")")  // centre below axis
+            .text(xaxis);
+            svg.append("text")
+            .attr("text-anchor", "middle")
+            .attr("transform", "translate("+ (-margin.left+15) +","+(height/2)+")rotate(-90)")
+            .text(yaxis);
+
+            svg.append("g")
+              .attr("transform", "translate(0," + height + ")")
+              .call(d3.axisBottom(x));
+            svg.append("g")
+              .call(d3.axisLeft(y));
         });
     }
 });
