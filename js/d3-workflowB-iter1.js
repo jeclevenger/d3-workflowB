@@ -38,6 +38,10 @@ $( document ).ready(function () {
 
     function loadData(datafilename) {
         d3.csv("data/d3-workflowB/" + datafilename, function(error, data) {
+            $( ".reuseSelector").empty();
+            d3.selectAll(".reuseSelector").append("option")
+                .attr("value", "none");
+
             if (error) throw error;
 
             var xaxisSelector = d3.select("#xaxisSelector");
@@ -113,16 +117,6 @@ $( document ).ready(function () {
                 var newth = newRow.append("th")
                             .classed("test", true);
                         newth.append("div").text(headerNames[k]);
-                if (isNaN(data[1][headerNames[k]])) {
-
-                } else {
-                    xaxisSelector.append("option")
-                        .attr("value", headerNames[k])
-                        .text(headerNames[k]);
-                    yaxisSelector.append("option")
-                        .attr("value", headerNames[k])
-                        .text(headerNames[k]);
-                }
             }
             data.forEach(function(d) {
                 var newRow = tbody.append("tr");
