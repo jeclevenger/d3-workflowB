@@ -53,30 +53,63 @@
                     <select class="u-full-width reuseSelector" id="xaxisSelector">
                         <option value="none"></option>
                     </select>
-                    <label for="xaxismin">x-min <span id="xaxisminRange" class="small">( )</span>:</label>
-                    <input type="number" name="xaxismin" id="xaxismin" autocomplete="off">
-                    <label for="xaxismax">x-max <span id="xaxismaxRange" class="small">( )</span>:</label>
-                    <input type="number" name="xaxismax" id="xaxismax" autocomplete="off">
                 </div>
+                <div class="eight columns">
+                    <div style="display: inline-block; padding-right: 2em;">
+                        <label for="xaxismin">x-min <span id="xaxisminRange" class="small">( )</span>:</label>
+                        <input type="number" name="xaxismin" id="xaxismin" autocomplete="off">
+                    </div>
+                    <div style="display: inline-block;">
+                        <label for="xaxismax">x-max <span id="xaxismaxRange" class="small">( )</span>:</label>
+                        <input type="number" name="xaxismax" id="xaxismax" autocomplete="off">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
                 <div class="four columns">
                     <label for="yaxisSelector">Choose y-axis:</label>
                     <select class="u-full-width reuseSelector" id="yaxisSelector">
                         <option value="none"></option>
                     </select>
-                    <label for="yaxismin">y-min <span id="yaxisminRange" class="small">( )</span>:</label>
-                    <input type="number" name="yaxismin" id="yaxismin" autocomplete="off">
-                    <label for="yaxismax">y-max <span id="yaxismaxRange" class="small">( )</span>:</label>
-                    <input type="number" name="yaxismax" id="yaxismax" autocomplete="off">
                 </div>
-                <div class="four columns">
-                    <label for="coloraxisSelector">Choose color-axis:</label>
+                <div class="eight columns">
+                    <div style="display: inline-block; padding-right: 2em;">
+                        <label for="yaxismin">y-min <span id="yaxisminRange" class="small">( )</span>:</label>
+                        <input type="number" name="yaxismin" id="yaxismin" autocomplete="off">
+                    </div>
+                    <div style="display: inline-block;">
+                        <label for="yaxismax">y-max <span id="yaxismaxRange" class="small">( )</span>:</label>
+                        <input type="number" name="yaxismax" id="yaxismax" autocomplete="off">
+                    </div>
+                </div>
+            </div>
+            <div class="row pt2">
+                <div class="three columns">
+                    <label for="coloraxisSelector">Choose color-axis and scale:</label>
                     <select class="u-full-width reuseSelector" id="coloraxisSelector">
                         <option value="none"></option>
                     </select>
-                    <label for="coloraxismin">color-min <span id="coloraxisminRange" class="small">( )</span>:</label>
-                    <input type="number" name="coloraxismin" id="coloraxismin" autocomplete="off">
-                    <label for="coloraxismax">color-max <span id="coloraxismaxRange" class="small">( )</span>:</label>
-                    <input type="number" name="coloraxismax" id="coloraxismax" autocomplete="off">
+                </div>
+                <div class="three columns">
+                    <label for="colorscaleSelector">
+                        <input class="radio" type="radio" name="coloraxistype" value="discrete" autocomplete="off"> Discrete
+                        <span style="display: inline-block">
+                            <input class="radio" type="radio" name="coloraxistype" value="continuous" autocomplete="off"> Continuous
+                        </span>
+                    </label>
+                    <select class="u-full-width reuseSelector" id="colorscaleSelector">
+                        <option value="none"></option>
+                    </select>
+                </div>
+                <div class="six columns">
+                    <div style="display: inline-block; padding-right: 2em;">
+                        <label for="coloraxismin">color-min <span id="coloraxisminRange" class="small">( )</span>:</label>
+                        <input type="number" name="coloraxismin" id="coloraxismin" autocomplete="off">
+                    </div>
+                    <div style="display: inline-block;">
+                        <label for="coloraxismax">color-max <span id="coloraxismaxRange" class="small">( )</span>:</label>
+                        <input type="number" name="coloraxismax" id="coloraxismax" autocomplete="off">
+                    </div>
                 </div>
             </div>
             <div class="row pt2">
