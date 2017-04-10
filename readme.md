@@ -18,6 +18,8 @@ getskeleton.com</p>
 <p>plot/data download/export functionality</p>
 <h3>iter-5 (planned)</h3>
 <p>generation setting export</p>
+<h3>iter-sometime (planned)</h3>
+<p>adjust to data sets length to change default plotting visualization settings, i.e. scatter plot dot size and table length, to handle very large data sets</p>
 
 
 
