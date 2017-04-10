@@ -6,10 +6,12 @@ getskeleton.com</p>
 
 <h3>iter-0</h3>
 <p>proof of concept</p>
-<h3>iter-1 (in progress)</h3>
+<h3>iter-1</h3>
 <p>scale control, data loading modified</p>
-<h3>iter-2 (in progress)</h2>
+<h3>iter-2</h2>
 <p>color by functionality</p>
+<h3>iter-2 (in-progress)</h2>
+<p>color by functionality by row or column</p>
 <h3>iter-3 (planned)</h3>
 <p>visibility toggles</p>
 <h3>iter-4 (planned)</h3>

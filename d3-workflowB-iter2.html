@@ -49,7 +49,7 @@
             </div>
             <div class="row">
                 <div class="four columns">
-                    <label for="xaxisSelector">Choose x-axis:</label>
+                    <label for="xaxisSelector">X-axis:</label>
                     <select class="u-full-width reuseSelector" id="xaxisSelector">
                         <option value="none"></option>
                     </select>
@@ -67,7 +67,7 @@
             </div>
             <div class="row">
                 <div class="four columns">
-                    <label for="yaxisSelector">Choose y-axis:</label>
+                    <label for="yaxisSelector">Y-axis:</label>
                     <select class="u-full-width reuseSelector" id="yaxisSelector">
                         <option value="none"></option>
                     </select>
@@ -84,25 +84,21 @@
                 </div>
             </div>
             <div class="row pt2">
-                <div class="three columns">
-                    <label for="coloraxisSelector">Choose color-axis and scale:</label>
+                <div class="four columns">
+                    <label for="coloraxisSelector">Color axis <span class="small" style="display: inline-block">( <span id="colormapType"></span> ):</span></label>
                     <select class="u-full-width reuseSelector" id="coloraxisSelector">
                         <option value="none"></option>
                     </select>
                 </div>
                 <div class="three columns">
-                    <label for="colorscaleSelector">
-                        <input class="radio" type="radio" name="coloraxistype" value="discrete" autocomplete="off"> Discrete
-                        <span style="display: inline-block">
-                            <input class="radio" type="radio" name="coloraxistype" value="continuous" autocomplete="off"> Continuous
-                        </span>
-                    </label>
-                    <select class="u-full-width reuseSelector" id="colorscaleSelector">
+                    <label for="colorscaleSelector">Color scale:</label>
+                    <select class="u-full-width" id="colorscaleSelector">
                         <option value="none"></option>
                     </select>
+
                 </div>
-                <div class="six columns">
-                    <div style="display: inline-block; padding-right: 2em;">
+                <div class="five columns">
+                    <div style="display: inline-block; padding-right: 0.5em;">
                         <label for="coloraxismin">color-min <span id="coloraxisminRange" class="small">( )</span>:</label>
                         <input type="number" name="coloraxismin" id="coloraxismin" autocomplete="off">
                     </div>
@@ -114,11 +110,11 @@
             </div>
             <div class="row pt2">
                 <div class="four columns">
-                  <label for="visualizationSelector">Choose visualization:</label>
+                  <label for="visualizationSelector">Visualization:</label>
                   <select class="u-full-width" id="visualizationSelector" autocomplete="off">
-                    <option selected="selected" value="example-small-data-set.csv">plot and table</option>
-                    <option value="example-small-data-set.csv" disabled>plot</option>
-                    <option value="example-large-data-set.csv" disabled>table</option>
+                    <option selected="selected" value="plotandtable">plot and table</option>
+                    <option value="plot" disabled>plot</option>
+                    <option value="table" disabled>table</option>
                   </select>
                 </div>
                 <div class="eight columns">
@@ -141,6 +137,7 @@
 
 <script src="js/jquery-3.2.0.min.js"></script>
 <script src="js/d3/d3.min.js"></script>
+<script src="js/d3/d3-scale-chromatic.min.js"></script>
 <script src="js/d3-workflowB-iter2.js"></script>
 </body>
 </html>
