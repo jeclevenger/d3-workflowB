@@ -232,8 +232,8 @@ $( document ).ready(function () {
                div.transition()
                  .duration(200)
                  .style("opacity", .9);
-               div.html("<div>" + xaxis + ":  " + d[xaxis] + "</div><div>" +  yaxis+ ":  " +d[yaxis] + "</div>")
-                 .style("left", (d3.event.pageX) + "px")
+               div.html("<div>Color (" + coloraxis + "):  " + d[coloraxis] + "</div><div>X-axis (" + xaxis + "):  " + d[xaxis] + "</div><div>Y-axis (" +  yaxis+ "):  " +d[yaxis] + "</div>")
+                 .style("left", (d3.event.pageX + 10) + "px")
                  .style("top", (d3.event.pageY - 28) + "px");
                })
              .on("mouseout", function(d) {
