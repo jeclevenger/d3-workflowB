@@ -177,7 +177,7 @@ $( document ).ready(function () {
             var color = d3.scaleSequential(d3["interpolate"+colorscale])
                 .domain([colormin,colormax]);
         } else {
-            alert("unknown color scale type")
+            var color = d3.scaleLinear(["black","black"]);
         }
         var div = d3.select("body").append("div")
             .attr("class", "tooltip")
